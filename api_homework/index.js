@@ -30,7 +30,7 @@ app.get("/randomname", (req, res) => {
 })
 
 
-// Now let's try something else, like returning a personalised message - reading form URL 
+// Now let's try something else, like returning a personalised message - reading from URL 
 
 app.get("/greet/:name", (req, res) => {     // :name is a dynamic part of the route
     const userName = req.params.name;       // getting the value the user has put in the URL
