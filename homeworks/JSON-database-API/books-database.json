@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "author": "J.K. Rowling",
+    "title": "Harry Potter and the Philosopher's Stone"
+  },
+  {
+    "id": 2,
+    "author": "Brett Peter V.",
+    "title": "The Warded Man"
+  },
+  {
+    "id": 3,
+    "author": "Will Wight",
+    "title": "Cradle"
+  },
+  {
+    "id": 4,
+    "author": "Fiodor Dostojewski",
+    "title": "Crime and Punishment"
+  }
+]
