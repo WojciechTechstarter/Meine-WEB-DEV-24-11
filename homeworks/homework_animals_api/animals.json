@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Zak",
+        "species": "dog",
+        "age": "8",
+        "color": "dark-brown"
+    },
+    {
+        "id": 2,
+        "name": "Belly",
+        "species": "cat",
+        "age": "3",
+        "color": "white"
+    },
+    {
+        "id": 3,
+        "name": "Ivy",
+        "species": "parrot",
+        "age": "4",
+        "color": "mixed"
+    },
+    {
+        "id": 4,
+        "name": "Lucy",
+        "species": "dog",
+        "age": "1",
+        "color": "grey"
+    }
+]
