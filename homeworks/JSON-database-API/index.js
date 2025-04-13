@@ -3,11 +3,20 @@ const cors = require("cors")
 const app = express();
 const fs = require("fs"); // This allows us to read and write files
 app.use(express.json()); // our Middleware, allows us to read request we write in the body // to parse JSON in request body
+const path = require("path")
 
+/*
 // CORS (Cross origin resource sharing activate)
 app.use(cors({            // to make it possible to fetch data from a database with a different Port / hosts
     origin: ["http://localhost:5500", "http://127.0.0.1:5500"]
 }));
+*/
+
+// Another Middleware which is checked after every request
+// The User/Browser is GETting the Express-Server and then with this \/, this server is displaying the VSC Live Server html file.
+app.use(express.static(path.join(__dirname, "frontend")));
+
+
 
 // helpfunction
 function readFile() {
