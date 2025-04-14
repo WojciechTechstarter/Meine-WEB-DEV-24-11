@@ -2,34 +2,36 @@ const express = require("express")
 const app = express()
 const sqlite3 = require("sqlite3")
 
-const db = new sqlite3.Database(":memory:")
+const db = new sqlite3.Database("tiere.db")
 
 db.serialize(() => {
-    db.run(`CREATE TABLE tiere (
-    id INTEGER PRIMARY KEY,
-    tierart VARCHAR(50),
-    name VARCHAR(50),
-    krankheit VARCHAR(100),
-    age INT,
-    gewicht REAL);`)
-    db.run(`INSERT INTO tiere(tierart,name,krankheit,age,gewicht) VALUES ("Hund","Bello","husten",5,12.4)`)
+    db.run(`CREATE TABLE IF NOT EXISTS tiere (
+        id INTEGER PRIMARY KEY,
+        tierart VARCHAR(50),
+        name VARCHAR(50),
+        krankheit VARCHAR(100),
+        age INT,
+        gewicht REAL
+    )`);
 
-    selectAllTiereQuery = `SELECT * FROM tiere`
-    db.all(selectAllTiereQuery, (err, rows) => {
+    db.get("SELECT COUNT(*) as count FROM tiere", (err, row) => {
         if (err) {
-            console.log(err)
-        } else {
-            console.log(rows)
+            console.error("Fehler beim Prüfen der Tabelle:", err);
+            return;
         }
-    })
-    process.on("exit", () => {
-        db.close()
-    })
-})
 
-app.get("/", (req, res) => {
-    res.send("Die API funktioniert!")
-})
+        if (row.count === 0) {
+            db.run(`INSERT INTO tiere(tierart, name, krankheit, age, gewicht)
+                    VALUES ("Hund", "Bello", "husten", 5, 12.4)`);
+        }
+    });
+
+    selectAllTiereQuery = `SELECT * FROM tiere`;
+});
+
+// app.get("/", (req, res) => {
+//     res.send("Die API funktioniert!")
+// })
 
 app.get("/tiere", (req, res) => {
     db.all(selectAllTiereQuery, (err, rows) => {
@@ -42,7 +44,7 @@ app.get("/tiere", (req, res) => {
 })
 
 app.use(express.json()) // Middleware to parse JSON bodies
-
+app.use(express.static("public"))
 
 app.get("/tiere/:id", (req, res) => {
     const id = req.params.id
