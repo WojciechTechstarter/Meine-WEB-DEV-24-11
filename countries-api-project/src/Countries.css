@@ -1,0 +1,48 @@
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.country-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 260px;
+    padding: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background: #fefefe;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 6px;
+    height: 140px;
+    object-fit: cover;
+}
+
+.card h2 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+}
+
+.load-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.load-button:hover {
+    background-color: #388e3c;
+}
